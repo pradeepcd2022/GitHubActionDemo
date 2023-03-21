@@ -39,12 +39,12 @@ jobs:
         run: |
            docker -v
            docker images -a
+           docker rmi pradeepcd/springboot-app:1.1
       - name: Docker build
         run: |
-           docker build -t springbootapp .
-           docker tag  springbootapp pradeepcd/springboot-app:1.1
+           docker build -t pradeepcd/springboot-app:1.1 .
            docker images -a
       - name: docker login
         run: docker login -u ${{ secrets.dockerhubusername }} -p ${{ secrets.dockerhubpassword }}
-      - name: docker push 
+      - name: docker image push
         run: docker push pradeepcd/springboot-app:1.1
