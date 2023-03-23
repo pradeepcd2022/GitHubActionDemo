@@ -26,15 +26,17 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
        # Runs a multople command scripts using the runners shell
-      - name: Run a multiple commands script
-        run: |
-         echo  added build steps!
-         echo  deploy the artifacts
-    # TO Run azure commands
+       # TO Run azure commands
       - name: Run Azure commands
         run:
          az account show
          az group list
+      - name: Run a multiple commands script
+        if: always() 
+        run: |
+         echo  added build steps!
+         echo  deploy the artifacts
+          ls -al
     # Check the version
       - name: java version 
         run: java -version
