@@ -27,6 +27,11 @@ jobs:
         run: echo Hello, world!
        # Runs a multople command scripts using the runners shell
        # TO Run azure commands
+      - name: Login with azure actions 
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTAILS }}'
+
       - name: Run Azure commands
         run:
          az account show
